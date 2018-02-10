@@ -18,10 +18,8 @@ You can find a GitHub tutorial [here](https://github.com/AguaClara/aguaclara_tut
 
 1. Below this, write a sentence or two about yourself:
 
-<!--- Fill you answer here. --->
-
-
-
+<!--- Fill your answer here. --->
+I'm Hannah and I'm completely new to markup languages!
 
 ## Headers
 To signify a header, use `#`. The more `#` you use, the smaller the header gets. For example, the following header Markdown code gets translated as such:
@@ -44,7 +42,7 @@ To signify a header, use `#`. The more `#` you use, the smaller the header gets.
 
 1. Make a header of similar size as Header 3 with whatever text you want:
 
-<!--- Fill you answer here. --->
+###Tbh, this is pretty aesthetic.
 
 ## Emphasis
 There are several different ways to emphasize text: *italics*, **bold**, ***combined***, and ~~strikethrough~~.
@@ -56,8 +54,7 @@ There are several different ways to emphasize text: *italics*, **bold**, ***comb
 
 1. Write 4 of your favorite words using each type of emphasis:
 
-<!--- Fill you answer here. --->
-
+*melancholy* **aurora** ***silver*** ~~crisp~~.
 
 ## Lists
 Lists are very easy to do. For a bulleted list, use the asterisk and for a numbered list, use the number followed by a period. Hitting `Enter` after a bullet or number continues the list automatically. Hitting `Enter` followed by `Tab` gets you a sub item for a bulleted list. For example:
@@ -68,7 +65,17 @@ Lists are very easy to do. For a bulleted list, use the asterisk and for a numbe
 
 1. Now try it out for yourself. Write down a list of things you hope to achieve this semester, and elaborate on them with sub items:
 
-<!--- Fill you answer here. --->
+
+1. Stay on top of school work
+* Preview material before lectures for certain classes
+* Pace out problem sets
+* Identify and resolve problems in understanding early on
+  - By reading textbook or online sources or consulting other people
+2. Make a fully functioning smartphone app for the Sensor Development team's submersible particle concentration Sensor
+  * with sufficiently accurate visual processing and concentration calculations
+  * with ability to display and use live feedback from camera
+  * with easy to use, informative GUI
+
 
 ## Images
 To input images, you'll either need an image URL or a file path to your image. For AguaClara work, your repository should have a folder for images where you can get an image URL or file path from. In this tutorial, I've made an image folder with a picture in the `aguaclara_tutorial` repository.
