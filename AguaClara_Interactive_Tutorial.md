@@ -107,10 +107,14 @@ Image with Height and Width Adjusted:
 
 1. Make an images folder in your personal repository, and import an image of your hometown or pet from that folder. Do it unformatted using the image URL and the relative file path method, then do it again but instead change the height and width of your image:
 
-<!--- Fill you answer here. --->
+######Image URL
+![random_goldfish](https://github.com/hs649/aguaclara_tutorial/blob/master/Images/random_goldfish.jpg?raw=true)
 
+######Relative Path
+![random_goldfish](/Images/random_goldfish.jpg)
 
-
+######Source code with dimension adjustments
+<img src = "https://github.com/hs649/aguaclara_tutorial/blob/master/Images/random_goldfish.jpg?raw=true" height = 100 width = 120>
 
 
 ## Links
@@ -120,7 +124,7 @@ To insert a link, all you have to do is enclose your linked text in `[]` followe
 
 1. Below, write a sentence describing your major, and insert a link to your major's department website.
 
-<!--- Fill you answer here. --->
+[Environmental engineering at Cornell](https://enve.cornell.edu/) is a major offered jointly by the BEE and CEE departments, combining civil, biological, and other disciplines of engineering to solve environmental challenges.
 
 ## Tables
 Tables in Markdown are slightly harder, but there's an automatic function that allows to you make one easily. When working in a `.md` file, all you have to do is type `table` and hit enter. It will initialize a 2 by 2 table, but you can easily increase the width by going to the last column and hitting `Tab` or it's height by clicking in any cell and hitting `Enter`. Notice in the example how the text below the header is justified left, center, and right. This is due to the line below the header. A line with a colon on the far left of the dashes only indicates left justified, colons on both sides of the dashes indicates centered, and a colon on the far right of the dashes indicates right justified.
@@ -150,8 +154,11 @@ When making tables, it's not important that the lines match up. For example, the
 
 1. Create a table listing your 3 favorite animals, foods, books, and places on campus. Try out the different cell justifications:
 
-<!--- Fill you answer here. --->
-
+| Animals  | Foods | Books  | Places on campus |
+|---------:|------:|:------:| :--------------- |
+| Mourning dove | Mint chocolate | Unbroken| Clocktower |
+| Fox | Mooncake | The Screwtape Letters| AD White Library|
+| Pomeranian | Peanut butter | Animal Farm | Libe Slope |
 
 
 ## Code and Syntax Highlighting
@@ -169,12 +176,13 @@ For larger code blocks where you report multiple lines of code, you always start
 
 1. Below, write a Python print function with a different string using syntax highlighting:
 
-<!--- Fill you answer here. --->
+`print('a different string')`
 
 2. Now write a block of Python code for that same print statement:
 
-<!--- Fill you answer here. --->
-
+```python
+print('a different string')
+```
 
 
 ## LaTeX Equations
@@ -184,7 +192,7 @@ $$ Re_D = \frac{uD}{\nu} $$
 
 1. Try it on your own! Write your favorite equation using LaTeX source code and toggle the LaTeX preview to see it formatted:
 
-<!--- Fill you answer here. --->
+$$e^{i\pi} + 1 = 0 $$
 
 
 # Using Python and Running it With Hydrogen in Markdown
@@ -198,6 +206,7 @@ $$ Re_D = \frac{uD}{\nu} $$
 from aide_design.play import*
 
 xArray = u.Quantity(np.arange(0.1, 0.5, 0.01), u.m)
+
 
 @u.wraps(None, [u.m / u.s, u.m, u.m ** 2 / u.s], False)
 def re_flat_plate(velocity, dist, nu):
@@ -220,40 +229,62 @@ These questions are meant to test what you've learned from the Python Basics tut
 
 1. Write a conditional statement with 3 conditions: when x is 10, when x is 1, and when x is anything other than 1 or 10. For each condition, have your code print what the value is or isn't.
 
-<!--- Fill you answer here. --->
+```python
+import random
+x = random.randint(1,11)
 
-
+if x == 10:
+  print('x equals 10')
+elif x == 1:
+  print('x equals 10')
+else:
+  print('x does not equal 1 or 10')
+```
 
 
 2. Write a `for` loop that takes a variable with an initial value of 0, and adds the current index to the previous value of that variable (i.e. you variable should grow in size every iteration). Perform the iteration 20 times, and have the final value be printed at the end.
 
-<!--- Fill you answer here. --->
-
-
-
-
-
-
-
+```python
+var = 0
+for i in range(20):
+  var = var + i
+print(var)
+```
 
 
 3. Using the NumPy package, calculate the value of sin(4), and use the sigfig function from the utility module in aide_design to get your answer to 3 sig-figs. *(Hint: You will need to import these packages. Remember how to do that?)*
 
-<!--- Fill you answer here. --->
+```python
+import numpy
+import aide_design.utility as u
 
+u.sig(numpy.sin(4), 3)
+```
 
 
 4. Create a `list` of length 5, and verify the length of your list. Once you've done that, turn your `list` into an `array` and apply units of meters to it. After that, create a 5x5 `array`, extract the middle row and middle column. Verify the size of your 2D `array` and apply units of liters to it.
 
-<!--- Fill you answer here. --->
+```python
+from aide_design.play import*
 
+list = [1,2,3,4,5]
+print('Length of list: ' + str(len(list)))
 
+array = np.array(list) * u.m
+#Not sure how to print the array; str(array) didn't work
 
+grid = np.ndarray((5,5))
+for i in range(5):
+  for j in range(5):
+    grid[i,j] = 5*i+j
 
+print('Middle row of 5x5: ' + str(grid[3,:]))
+print('Middle row of 5x5: ' + str(grid[:,3]))
 
-
-
-
+print('Size: ' + str(np.size(grid)))
+grid = grid * u.l
+#same issue with printing here
+```
 
 5.  One of the most famous equations for a particle diffusing through a liquid at low Reynolds Number is the Stokes-Einstein Equation where k<sub>B</sub> is the Boltzmann constant, T is the temperature in Kelvin, eta is the dynamic viscosity in kg/(m*s), and r is the particle radius. Write a function that takes a temperature in Kelvin, a particle radius in meters, and a viscosity of water to calculate the diffusion coefficient D.
 
@@ -265,30 +296,52 @@ $$ D = \frac{k_BT}{6\pi\eta r} $$
 
 ```python
 from scipy.constants import Boltzmann as kB_sc # I've imported the unitless value for kB from SciPy
+from scipy.constants import pi
 
 kB = kB_sc * u.joule / u.kelvin # I've given kB units for you in J/K; you can use the kB variable to give you Boltzmann's constant with units
 
-# Write your code here
+def diffusionCoefficient(temp, dynamic_viscocity, radius):
+  """This function calculates the diffusion coefficient for a particle diffusing through water given parameters of temperature in Kelvin, dynamic viscosity in kg/m*s, and the particle radius."""
+  T = temp * u.kelvin
+  eta = dynamic_viscocity * u.kilogram / u.m / u.second
+  r = radius * u.m
+  return kB * T / (6 * pi * eta * r)
 
+print(diffusionCoefficient(283, 5, .001))
+print(diffusionCoefficient(290, 12.3, .01))
 ```
 
 6. You have a pipe with a radius of 0.2 m with water flowing in it at 2 m<sup>3</sup>/s. You want to see how the Reynolds Number changes as viscosity changes due to a change in temperature from 0 to 200<sup>o</sup>C. Create a plot of Reynolds Number against Temperature in Kelvin to show a relationship. Make sure your plot has a title, labeled axes, and axes grid. You can use functions from `physchem` like `pc.re_pipe` and `pc.viscosity_kinematic`. *(Hint: Make an array of temperatures to input into the `pc.viscosity_kinematic` function)*. Make sure to save you plot to your images folder in your personal repository.
 
-<!--- Fill you answer here. --->
+```python
+from aide_design.play import*
+
+temps = np.arange(1+273,200+273,1)
+vk = []
+for i in temps:
+  vk.append(pc.re_pipe(2, 0.2, pc.viscosity_kinematic(i)))
+
+plt.plot(np.array(temps), np.array(vk), '-')
+plt.xlabel('Temperature (Kelvin)')
+plt.ylabel('Reynolds Number (Meters)')
+plt.title('Reynolds Number vs Temperature')
+plt.minorticks_on()
+plt.grid(which = 'major')
+plt.grid(which = 'minor')
+plt.show()
+```
 
 # Teletype Basics
 In this section you and your team can practice using Teletype together.
 
 1. Create a portal for your team members to join. Have them write you words of  encouragement in the space below, and be sure they sign their name next to their encouragements.
 
-<!--- Fill you answer here. --->
+Hey Hannah!! You're really awesome and smart, and I'm so glad Monroe chose you to be on our team.-Lois Lee
 
-
+You did a great job playing the cymbal yesterday! -Srilekha Vangavolu
 
 
 2. Have you other team members create a portal for you to join. In their Markdown file, write them something encouraging, and sign your name.
-
-<!--- Fill you answer here. --->
 
 
 # GitHub Basics
